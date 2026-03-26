@@ -8,6 +8,7 @@
 #include "grocery.h"
 #include "item.h"
 #include "exceptions.h"
+#include <fstream>
 
 class Inventory
 {
@@ -27,6 +28,9 @@ public:
 
     const auto& getItems() const noexcept {return items;}
     auto& getItemsMutable() noexcept  {return items;}
+
+    void readFromFile(const std::string& filename);
+    void writeToFile(const std::string& filename);
 private:
     std::vector<std::shared_ptr<Item>> items;
 };

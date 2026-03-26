@@ -78,7 +78,7 @@ int main()
     i5.removeItem("00");
   } catch (const InventoryException& err)
   {
-    std::cerr << "Błąd: " << err.what() << std::endl;
+    std::cout << "Błąd: " << err.what() << std::endl;
   }
 
   try
@@ -86,7 +86,7 @@ int main()
     i5.removeItem("00");
   } catch (const InventoryException& err)
   {
-    std::cerr << "Błąd: " << err.what() << std::endl;
+    std::cout << "Błąd: " << err.what() << std::endl;
   }
 
   try
@@ -94,7 +94,7 @@ int main()
     i5.updateQuantity("99",100);
   } catch (const InventoryException& err)
   {
-    std::cerr << "Błąd: " << err.what() << std::endl;
+    std::cout << "Błąd: " << err.what() << std::endl;
   }
 
   try
@@ -102,12 +102,33 @@ int main()
     i5.updateQuantity("E1",-177);
   } catch (const InventoryException& err)
   {
-    std::cerr << "Błąd: " << err.what() << std::endl;
+    std::cout << "Błąd: " << err.what() << std::endl;
   }
 
   std::cout << "--------------------------------------------------" << std::endl;
 
   /* ----TASK 6----- */
 
+  Inventory i6;
+  i6.readFromFile("inventory.csv");
+  i6.displayInventory();
 
+  try
+  {
+    i6.readFromFile("bbbbbwkdw.csv");
+  } catch (const InventoryException& err)
+  {
+    std::cout << "Błąd: " << err.what() << std::endl;
+  }
+
+  try
+  {
+    i6.writeToFile("inventorySaved.csv");
+  } catch (const InventoryException& err)
+  {
+    std::cout << "Błąd: " << err.what() << std::endl;
+  }
+  std::cout << "--------------------------------------------------" << std::endl;
+
+  
 }
