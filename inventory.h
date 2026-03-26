@@ -7,7 +7,7 @@
 #include "electronics.h"
 #include "grocery.h"
 #include "item.h"
-
+#include "exceptions.h"
 
 class Inventory
 {
@@ -23,10 +23,10 @@ public:
     void addItem(std::shared_ptr<Item>);
     void removeItem(const std::string& itemID);
     void updateQuantity(const std::string& itemID, int quantity);
-    void displayInventory() const;
+    void displayInventory() const noexcept;
 
-    const auto& getItems() const {return items;}
-    auto& getItemsMutable()  {return items;}
+    const auto& getItems() const noexcept {return items;}
+    auto& getItemsMutable() noexcept  {return items;}
 private:
     std::vector<std::shared_ptr<Item>> items;
 };
@@ -44,7 +44,7 @@ inline std::shared_ptr<Item> makeGrocery(const std::string& id, const std::strin
 }
 
 template <typename Predicate>
-std::vector<std::shared_ptr<Item>> filterItems(const Inventory& inv, Predicate pred)
+std::vector<std::shared_ptr<Item>> filterItems(const Inventory& inv, Predicate pred) noexcept
 {
     std::vector<std::shared_ptr<Item>> result;
     auto& items = inv.getItems();
@@ -53,7 +53,7 @@ std::vector<std::shared_ptr<Item>> filterItems(const Inventory& inv, Predicate p
 }
 
 template<typename Key>
-void sortItems(Inventory& inv, Key keyFn)
+void sortItems(Inventory& inv, Key keyFn) noexcept
 {
     auto& items = inv.getItemsMutable();
     std::sort(items.begin(),items.end(),keyFn);

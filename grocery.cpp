@@ -6,14 +6,14 @@
 
 #include <iostream>
 
-void Grocery::display() const
+void Grocery::display() const noexcept
 {
     std::cout << "[Grocery]     ID: " << this->getItemID()
     << " | Name: " << this->getName() << " | Qty: " << this->getQuantity()
     << " | Price: " << this->getPrice() << " | Warranty: " << expirationDate << std::endl;
 }
 
-std::optional<std::string> Grocery::findAttribute(const std::string& key) const
+std::optional<std::string> Grocery::findAttribute(const std::string& key) const noexcept
 {
     if (key==EXPIRATION_KEY)
         return expirationDate;

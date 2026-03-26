@@ -70,5 +70,44 @@ int main()
 
   /* ----TASK 5-----*/
 
-  
+  Inventory i5;
+  i5.addItem(makeElectronics("E1","Phone",10,699.99,24));
+  try
+  {
+    i5.addItem(makeElectronics("E1","Phone2",10,699.99,24));
+    i5.removeItem("00");
+  } catch (const InventoryException& err)
+  {
+    std::cerr << "Błąd: " << err.what() << std::endl;
+  }
+
+  try
+  {
+    i5.removeItem("00");
+  } catch (const InventoryException& err)
+  {
+    std::cerr << "Błąd: " << err.what() << std::endl;
+  }
+
+  try
+  {
+    i5.updateQuantity("99",100);
+  } catch (const InventoryException& err)
+  {
+    std::cerr << "Błąd: " << err.what() << std::endl;
+  }
+
+  try
+  {
+    i5.updateQuantity("E1",-177);
+  } catch (const InventoryException& err)
+  {
+    std::cerr << "Błąd: " << err.what() << std::endl;
+  }
+
+  std::cout << "--------------------------------------------------" << std::endl;
+
+  /* ----TASK 6----- */
+
+
 }
