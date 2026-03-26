@@ -3,3 +3,8 @@
 //
 
 #include "inventory.h"
+
+void Inventory::addItem(std::shared_ptr<Item>)
+{
+    
+}

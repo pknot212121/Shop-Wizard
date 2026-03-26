@@ -7,4 +7,7 @@ add_executable(Shop_Wizard main.cpp
         item.h
         electronics.h
         grocery.h
-        inventory.h)
+        inventory.h
+        electronics.cpp
+        grocery.cpp
+        inventory.cpp)

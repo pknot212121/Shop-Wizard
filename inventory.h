@@ -18,6 +18,11 @@ public:
         int qty,double price, int warrantyMonths);
     std::shared_ptr<Item> makeGrocery(const std::string& id, const std::string& name,
         int qty, double price, const std::string& expDate);
+
+    template<typename Predicate>
+    std::vector<std::shared_ptr<Item>> filterItems(const Inventory& inv, Predicate pred);
+    template<typename Key>
+    void sortItems(Inventory& inv, Key keyFn);
 private:
     std::vector<std::shared_ptr<Item>> items;
 };
