@@ -32,8 +32,8 @@ int main()
 
   Inventory i2,i3;
 
-  i2.addItem(Inventory::makeElectronics("E1","Phone",10,699.99,24));
-  i2.addItem(Inventory::makeGrocery("G1","Apple",30,1.49,"2026-06-01"));
+  i2.addItem(makeElectronics("E1","Phone",10,699.99,24));
+  i2.addItem(makeGrocery("G1","Apple",30,1.49,"2026-06-01"));
 
   std::cout << "BEFORE MOVE" << std::endl;
   std::cout << "Displaying i2:" << std::endl;
@@ -48,4 +48,27 @@ int main()
   std::cout << "Displaying i3:" << std::endl;
   i3.displayInventory();
   std::cout << "--------------------------------------------------" << std::endl;
+
+
+  /* ----TASK 4-----*/
+
+  Inventory i4;
+  i4.addItem(makeElectronics("E1","Phone",10,699.99,24));
+  i4.addItem(makeGrocery("G1","Apple",30,1.49,"2026-06-01"));
+  i4.addItem(makeGrocery("P1","Potato",30,16.49,"2026-06-01"));
+  i4.addItem(makeElectronics("L1","Laptop",10,1799.99,24));
+  auto a = filterItems(i4,[](const std::shared_ptr<Item>& item){return item->getQuantity()<20;});
+  for (auto& item : a ) item->display();
+
+  std::cout << "BEFORE SORTING: " << std::endl;
+  i4.displayInventory();
+
+  sortItems(i4,[](const std::shared_ptr<Item>& item1,const std::shared_ptr<Item>& item2){return item1->getPrice()<item2->getPrice();});
+  std::cout << "AFTER SORTING: " << std::endl;
+  i4.displayInventory();
+  std::cout << "--------------------------------------------------" << std::endl;
+
+  /* ----TASK 5-----*/
+
+  
 }
