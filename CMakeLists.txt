@@ -4,4 +4,7 @@ project(Shop_Wizard)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Shop_Wizard main.cpp
-        item.h)
+        item.h
+        electronics.h
+        grocery.h
+        inventory.h)
