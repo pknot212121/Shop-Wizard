@@ -8,7 +8,7 @@
 
 void Grocery::display() const
 {
-    std::cout << "[Electronics] ID: " << this->getItemID()
+    std::cout << "[Grocery]     ID: " << this->getItemID()
     << " | Name: " << this->getName() << " | Qty: " << this->getQuantity()
     << " | Price: " << this->getPrice() << " | Warranty: " << expirationDate << std::endl;
 }
