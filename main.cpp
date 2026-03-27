@@ -1,10 +1,12 @@
 #include <iostream>
+
+#include "command_ui.h"
 #include "electronics.h"
 #include "grocery.h"
 #include "inventory.h"
-int main()
-{
 
+void runTests()
+{
   /* ----TASK 1-----*/
 
   Electronics e("E1","Phone",10,699.99,24);
@@ -129,6 +131,13 @@ int main()
     std::cout << "Błąd: " << err.what() << std::endl;
   }
   std::cout << "--------------------------------------------------" << std::endl;
+}
 
-  
+int main()
+{
+  runTests();
+
+  CommandUI app;
+  app.run();
+
 }

@@ -25,8 +25,8 @@ public:
 class InvalidValueException : public InventoryException
 {
 public:
-    explicit InvalidValueException(int val)
-        : InventoryException("Value: " + std::to_string(val) + " is not correct / negative!") {}
+    explicit InvalidValueException(const std::string& msg)
+        : InventoryException(msg) {}
 };
 
 #endif //SHOP_WIZARD_INVENTORYEXCEPTIONS_H

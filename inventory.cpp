@@ -1,7 +1,3 @@
-//
-// Created by tk2 on 3/26/26.
-//
-
 #include "inventory.h"
 
 #include <algorithm>
@@ -65,8 +61,8 @@ void Inventory::readFromFile(const std::string& filename)
 
         int qty = std::stoi(qnyStr);
         double price = std::stod(priceStr);
-        if (qty<0) throw InvalidValueException(qty);
-        if (price<0) throw InvalidValueException(price);
+        if (qty<0) throw InvalidValueException(QUANT_NEGATIVE_ERR);
+        if (price<0) throw InvalidValueException(PRICE_NEGATIVE_ERR);
         if (cat==Electronics::CATEGORY_NAME)
             addItem(makeElectronics(id,name,qty,price,std::stoi(extra)));
         else if (cat==Grocery::CATEGORY_NAME)
@@ -79,7 +75,7 @@ void Inventory::writeToFile(const std::string& filename)
 {
     std::ofstream file(filename);
     if (!file.is_open())
-        throw InventoryException("File cannot be opened to save!");
+        throw InventoryException(ERR_SAVE_FAIL);
     for (const auto& item : items)
     {
         file << item->getItemID() << "," << item->category() << ","

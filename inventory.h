@@ -10,6 +10,10 @@
 #include "exceptions.h"
 #include <fstream>
 
+
+static constexpr const char* ERR_EMPTY_MAX = "Cannot find largest element inside an empty inventory!";
+static constexpr const char* ERR_SAVE_FAIL = "File cannot be opened to save!";
+
 class Inventory
 {
 public:
@@ -61,6 +65,17 @@ void sortItems(Inventory& inv, Key keyFn) noexcept
 {
     auto& items = inv.getItemsMutable();
     std::sort(items.begin(),items.end(),keyFn);
+}
+
+template<typename Key>
+std::shared_ptr<Item> findMaxItem(const Inventory& inv,Key keyFn)
+{
+    const auto& items = inv.getItems();
+    if (items.empty())
+        throw InventoryException(ERR_EMPTY_MAX);
+    auto it = std::max_element(items.begin(),items.end(),
+        [&keyFn](const auto& a,const auto& b){return keyFn(a)<keyFn(b);});
+    return *it;
 }
 
 #endif //SHOP_WIZARD_INVENTORY_H

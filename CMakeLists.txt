@@ -11,4 +11,6 @@ add_executable(Shop_Wizard main.cpp
         electronics.cpp
         grocery.cpp
         inventory.cpp
-        InventoryExceptions.h)
+        exceptions.h
+        command_ui.h
+        command_ui.cpp)
