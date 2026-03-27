@@ -1,7 +1,3 @@
-//
-// Created by tk2 on 3/26/26.
-//
-
 #include "electronics.h"
 
 void Electronics::display() const noexcept

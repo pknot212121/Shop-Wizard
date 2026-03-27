@@ -74,12 +74,7 @@ void CommandUI::run()
 int CommandUI::getMenuChoice()
 {
     int choice = 0;
-    if (!(std::cin >> choice))
-    {
-        std::cin.clear();
-        std::cin.ignore(1000,'\n');
-        throw InvalidValueException(ERR_NOT_NUMBER);
-    }
+    getInputs(choice);
     if (choice<1 || choice>11)
         throw InvalidValueException(ERR_OUT_OF_RANGE);
     return choice;
