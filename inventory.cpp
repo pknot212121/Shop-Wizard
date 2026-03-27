@@ -49,26 +49,38 @@ void Inventory::readFromFile(const std::string& filename)
     if (!file.is_open())
         throw InventoryException("File " + filename + " not found!");
 
+    Inventory tempInventory;
     std::string line;
     while (std::getline(file,line))
     {
+        if (line.empty()) continue;
         std::stringstream ss(line);
         std::string id,cat,name,qnyStr,priceStr,extra;
 
-        std::getline(ss,id,','); std::getline(ss,cat,',');
-        std::getline(ss,name,','); std::getline(ss,qnyStr,',');
-        std::getline(ss,priceStr,','); std::getline(ss,extra,',');
+        if (!std::getline(ss,id,',') || !std::getline(ss,cat,',') ||
+        !std::getline(ss,name,',') || !std::getline(ss,qnyStr,',') ||
+        !std::getline(ss,priceStr,',') || !std::getline(ss,extra,','))
+        {
+            throw InventoryException("Invalid file format in line: " + line);
+        }
+        try
+        {
+            int qty = std::stoi(qnyStr);
+            double price = std::stod(priceStr);
+            if (qty<0) throw InvalidValueException(QUANT_NEGATIVE_ERR);
+            if (price<0) throw InvalidValueException(PRICE_NEGATIVE_ERR);
+            if (cat==Electronics::CATEGORY_NAME)
+                tempInventory.addItem(makeElectronics(id,name,qty,price,std::stoi(extra)));
+            else if (cat==Grocery::CATEGORY_NAME)
+                tempInventory.addItem(makeGrocery(id,name,qty,price,extra));
+            else throw InventoryException("Category: " + cat + " not available!");
+        } catch (const std::invalid_argument&)
+        {
+            throw InvalidValueException("Numeric conversion failed in line: " + line);
+        }
 
-        int qty = std::stoi(qnyStr);
-        double price = std::stod(priceStr);
-        if (qty<0) throw InvalidValueException(QUANT_NEGATIVE_ERR);
-        if (price<0) throw InvalidValueException(PRICE_NEGATIVE_ERR);
-        if (cat==Electronics::CATEGORY_NAME)
-            addItem(makeElectronics(id,name,qty,price,std::stoi(extra)));
-        else if (cat==Grocery::CATEGORY_NAME)
-            addItem(makeGrocery(id,name,qty,price,extra));
-        else throw InventoryException("Category: " + cat + " not available!");
     }
+    *this = std::move(tempInventory);
 }
 
 void Inventory::writeToFile(const std::string& filename)
