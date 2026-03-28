@@ -60,15 +60,15 @@ void runTests()
   i4.addItem(makeGrocery("G1","Apple",30,1.49,"2026-06-01"));
   i4.addItem(makeGrocery("P1","Potato",30,16.49,"2026-06-01"));
   i4.addItem(makeElectronics("L1","Laptop",10,1799.99,24));
-  std::cout << "FILTERED ITEMS:" << std::endl;
+  std::cout << "FILTERED ITEMS BELOW 20 QUANTITY:" << std::endl;
   auto a = filterItems(i4,[](const std::shared_ptr<Item>& item){return item->getQuantity()<20;});
   for (auto& item : a ) item->display();
 
-  std::cout << "BEFORE SORTING: " << std::endl;
+  std::cout << "BEFORE SORTING BY PRICE: " << std::endl;
   i4.displayInventory();
 
   sortItems(i4,[](const std::shared_ptr<Item>& item1,const std::shared_ptr<Item>& item2){return item1->getPrice()<item2->getPrice();});
-  std::cout << "AFTER SORTING: " << std::endl;
+  std::cout << "AFTER SORTING BY PRICE: " << std::endl;
   i4.displayInventory();
   std::cout << "---------------TASK 5-------------------" << std::endl;
 
