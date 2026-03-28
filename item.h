@@ -6,6 +6,28 @@
 #include <utility>
 #include <string_view>
 #include "exceptions.h"
+#include <iomanip>
+
+namespace DisplayConfig
+{
+    static constexpr int W_CAT = 14;
+    static constexpr int W_ID = 4;
+    static constexpr int W_NAME = 12;
+    static constexpr int W_QTY = 4;
+    static constexpr int W_PRICE = 8;
+
+    static constexpr const char* L_EL = "[Electronics]";
+    static constexpr const char* L_GR = "[Grocery]";
+    static constexpr const char* L_ID = " ID: ";
+    static constexpr const char* L_NAME = " | Name: ";
+    static constexpr const char* L_QTY = " | Qty: ";
+    static constexpr const char* L_PRICE = " | Price: ";
+    static constexpr const char* L_WARRANTY = " | Warranty: ";
+    static constexpr const char* L_MONTHS = " months";
+    static constexpr const char* L_EXPIRES = " | Expires: ";
+
+}
+
 
 static constexpr const char* PRICE_NEGATIVE_ERR = "Price cannot be negative!";
 static constexpr const char* QUANT_NEGATIVE_ERR = "Quantity cannot be negative!";

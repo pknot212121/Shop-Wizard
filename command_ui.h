@@ -20,12 +20,28 @@ static constexpr const char* MENU_OPTIONS[12] = {
 };
 
 static constexpr const char* MENU =
-    "Welcome to Shop wizard!\nChoose one of the following options:\n1. Add Electronics\n2. Add Grocery\n3. Remove Item\n4. Update Quantity\n5. Display Inventory\n6. Read from File\n7. Write to File\n8. Find Most Expensive Item\n9. Find Items Below Quantity Threshold\n10. Sort by Price\n11. Exit ";
+    "###########################################################\n"
+    "Welcome to Shop wizard!\nChoose one of the following options:\n"
+    "1. Add Electronics - params: (id,name,qty,price,warranty)\n"
+    "2. Add Grocery - params: (id,name,qty,price,exp)\n"
+    "3. Remove Item - params: (id)\n"
+    "4. Update Quantity - params: (id,qty)\n"
+    "5. Display Inventory\n"
+    "6. Read from File - params: (filename)\n"
+    "7. Write to File - params: (filename)\n"
+    "8. Find Most Expensive Item\n"
+    "9. Find Items Below Quantity Threshold - params: (qty)\n"
+    "10. Sort by Price\n"
+    "11. Exit \n"
+    "#############################################################\n"
+    "REMEMBER TO FIRST PUT THE NUMBER AND THEN THE PARAMS IN NEW LINE";
 
 static constexpr const char* ERR_INVALID_ARGS = "Not enough arguments or bad argument types!";
 static constexpr const char* ERR_TOO_MANY_ARGS = "Too many arguments!";
 static constexpr const char* ERR_NOT_NUMBER = "Input must be a number!";
 static constexpr const char* ERR_OUT_OF_RANGE = "Option out of range (1-11)!";
+static constexpr const char* ERR_BASE = "Error: ";
+static constexpr const char* LINE_START = "> ";
 
 class CommandUI {
 public:

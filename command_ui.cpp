@@ -7,14 +7,14 @@ void CommandUI::run()
     {
         try
         {
-            std::cout << "> ";
+            std::cout << LINE_START;
             int choice = getMenuChoice();
             if (choice==11) break;
 
             std::string id, name,expDate,filename;
             int qty, warranty; double price,thresh;
 
-            std::cout << "> " << MENU_OPTIONS[choice];
+            std::cout << LINE_START << MENU_OPTIONS[choice];
 
             switch (choice)
             {
@@ -67,7 +67,7 @@ void CommandUI::run()
                 break;
             default: ;
             }
-        } catch (const InventoryException& err) {std::cout << "Error: " << err.what() << std::endl;}
+        } catch (const InventoryException& err) {std::cout << ERR_BASE << err.what() << std::endl;}
     }
 }
 

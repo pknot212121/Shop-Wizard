@@ -14,8 +14,8 @@ void runTests()
   Grocery g("G1","Apple",30,1.49,"2026-06-01");
   g.display();
   std::cout << e.category() << " " << g.category() << std::endl;
-  std::cout << e.findAttribute("warranty").value_or("Brak") << " "
-  << e.findAttribute("expirationDate").value_or("Brak") << std::endl;
+  std::cout << e.findAttribute("warranty").value_or("None") << " "
+  << e.findAttribute("expirationDate").value_or("None") << std::endl;
   std::cout << "--------------------------------------------------" << std::endl;
 
   /* ----TASK 2-----*/
@@ -80,7 +80,7 @@ void runTests()
     i5.removeItem("00");
   } catch (const InventoryException& err)
   {
-    std::cout << "Błąd: " << err.what() << std::endl;
+    std::cout << "Error: " << err.what() << std::endl;
   }
 
   try
@@ -88,7 +88,7 @@ void runTests()
     i5.removeItem("00");
   } catch (const InventoryException& err)
   {
-    std::cout << "Błąd: " << err.what() << std::endl;
+    std::cout << "Error: " << err.what() << std::endl;
   }
 
   try
@@ -96,7 +96,7 @@ void runTests()
     i5.updateQuantity("99",100);
   } catch (const InventoryException& err)
   {
-    std::cout << "Błąd: " << err.what() << std::endl;
+    std::cout << "Error: " << err.what() << std::endl;
   }
 
   try
@@ -104,7 +104,7 @@ void runTests()
     i5.updateQuantity("E1",-177);
   } catch (const InventoryException& err)
   {
-    std::cout << "Błąd: " << err.what() << std::endl;
+    std::cout << "Error: " << err.what() << std::endl;
   }
 
   std::cout << "--------------------------------------------------" << std::endl;
@@ -120,7 +120,7 @@ void runTests()
     i6.readFromFile("bbbbbwkdw.csv");
   } catch (const InventoryException& err)
   {
-    std::cout << "Błąd: " << err.what() << std::endl;
+    std::cout << "Error: " << err.what() << std::endl;
   }
 
   try
@@ -128,7 +128,7 @@ void runTests()
     i6.writeToFile("inventorySaved.csv");
   } catch (const InventoryException& err)
   {
-    std::cout << "Błąd: " << err.what() << std::endl;
+    std::cout << "Error: " << err.what() << std::endl;
   }
   std::cout << "--------------------------------------------------" << std::endl;
 }

@@ -90,13 +90,13 @@ void Inventory::writeToFile(const std::string& filename)
         throw InventoryException(ERR_SAVE_FAIL);
     for (const auto& item : items)
     {
-        file << item->getItemID() << "," << item->category() << ","
-        << item->getName() << "," << item->getQuantity() << ","
+        file << item->getItemID() << ',' << item->category() << ','
+        << item->getName() << ',' << item->getQuantity() << ','
         << item->getPrice();
 
         if (item->category()==Electronics::CATEGORY_NAME)
-            file << "," << item->findAttribute(Electronics::WARRANTY_KEY).value_or("0");
-        else file << "," << item->findAttribute(Grocery::EXPIRATION_KEY).value_or("N/A");
-        file << "\n";
+            file << ',' << item->findAttribute(Electronics::WARRANTY_KEY).value_or("0");
+        else file << ',' << item->findAttribute(Grocery::EXPIRATION_KEY).value_or("N/A");
+        file << '\n';
     }
 }
