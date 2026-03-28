@@ -9,6 +9,7 @@ The commands should be inputted as follows:
 ```
 - The arguments should be separated by spaces
 - Only the exact number and type of arguments can be inputted, otherwise the program will throw an exception.
+- Names cannot have spaces inside them.
 
 ### Tests
 - The program also includes some tests and sample .csv files for earlier tasks.
