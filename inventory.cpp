@@ -63,6 +63,8 @@ void Inventory::readFromFile(const std::string& filename)
         {
             throw InventoryException("Invalid file format in line: " + line);
         }
+        std::string trailing;
+        if (ss >> trailing) throw InventoryException("Too many columns in line: " + line);
         try
         {
             int qty = std::stoi(qnyStr);
@@ -77,6 +79,9 @@ void Inventory::readFromFile(const std::string& filename)
         } catch (const std::invalid_argument&)
         {
             throw InvalidValueException("Numeric conversion failed in line: " + line);
+        } catch (const std::out_of_range&)
+        {
+            throw InvalidValueException("Numeric conversion failed: (invalid format or value too large) in line: " +line);
         }
 
     }

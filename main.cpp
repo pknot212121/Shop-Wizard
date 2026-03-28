@@ -156,6 +156,30 @@ void runTests()
     std::cout << "Error: " << err.what() << std::endl;
   }
 
+  try
+  {
+    i6.readFromFile("inventoryLarge.csv");
+  } catch (const InventoryException& err)
+  {
+    std::cout << "Error: " << err.what() << std::endl;
+  }
+
+  try
+  {
+    i6.readFromFile("inventorySmall.csv");
+  } catch (const InventoryException& err)
+  {
+    std::cout << "Error: " << err.what() << std::endl;
+  }
+
+  try
+  {
+    i6.readFromFile("inventoryVal.csv");
+  } catch (const InventoryException& err)
+  {
+    std::cout << "Error: " << err.what() << std::endl;
+  }
+
 
   try
   {
