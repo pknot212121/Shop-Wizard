@@ -7,6 +7,7 @@
 
 void runTests()
 {
+  std::cout << "---------------TASK 1-------------------" << std::endl;
   /* ----TASK 1-----*/
 
   Electronics e("E1","Phone",10,699.99,24);
@@ -16,7 +17,7 @@ void runTests()
   std::cout << e.category() << " " << g.category() << std::endl;
   std::cout << e.findAttribute("warranty").value_or("None") << " "
   << e.findAttribute("expirationDate").value_or("None") << std::endl;
-  std::cout << "--------------------------------------------------" << std::endl;
+  std::cout << "---------------TASK 2-------------------" << std::endl;
 
   /* ----TASK 2-----*/
 
@@ -28,7 +29,7 @@ void runTests()
   i.displayInventory();
   i.removeItem("E1");
   i.displayInventory();
-  std::cout << "--------------------------------------------------" << std::endl;
+  std::cout << "---------------TASK 3-------------------" << std::endl;
 
   /* ----TASK 3-----*/
 
@@ -49,7 +50,7 @@ void runTests()
   i2.displayInventory();
   std::cout << "Displaying i3:" << std::endl;
   i3.displayInventory();
-  std::cout << "--------------------------------------------------" << std::endl;
+  std::cout << "---------------TASK 4-------------------" << std::endl;
 
 
   /* ----TASK 4-----*/
@@ -68,7 +69,7 @@ void runTests()
   sortItems(i4,[](const std::shared_ptr<Item>& item1,const std::shared_ptr<Item>& item2){return item1->getPrice()<item2->getPrice();});
   std::cout << "AFTER SORTING: " << std::endl;
   i4.displayInventory();
-  std::cout << "--------------------------------------------------" << std::endl;
+  std::cout << "---------------TASK 5-------------------" << std::endl;
 
   /* ----TASK 5-----*/
 
@@ -107,12 +108,19 @@ void runTests()
     std::cout << "Error: " << err.what() << std::endl;
   }
 
-  std::cout << "--------------------------------------------------" << std::endl;
+  std::cout << "---------------TASK 6-------------------" << std::endl;
 
   /* ----TASK 6----- */
 
   Inventory i6;
-  i6.readFromFile("inventory.csv");
+  try
+  {
+    i6.readFromFile("inventory.csv");
+  } catch (const InventoryException& err)
+  {
+    std::cout << "Error: " << err.what() << std::endl;
+  }
+
   i6.displayInventory();
 
   try

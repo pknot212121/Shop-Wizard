@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 4.1)
+cmake_minimum_required(VERSION 3.10)
 project(Shop_Wizard)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Shop_Wizard main.cpp
         item.h
@@ -14,3 +14,5 @@ add_executable(Shop_Wizard main.cpp
         exceptions.h
         command_ui.h
         command_ui.cpp)
+
+configure_file(inventory.csv ${CMAKE_CURRENT_BINARY_DIR}/inventory.csv COPYONLY)
