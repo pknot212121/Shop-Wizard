@@ -16,3 +16,6 @@ add_executable(Shop_Wizard main.cpp
         command_ui.cpp)
 
 configure_file(inventory.csv ${CMAKE_CURRENT_BINARY_DIR}/inventory.csv COPYONLY)
+configure_file(inventoryDup.csv ${CMAKE_CURRENT_BINARY_DIR}/inventoryDup.csv COPYONLY)
+configure_file(inventoryNeg.csv ${CMAKE_CURRENT_BINARY_DIR}/inventoryNeg.csv COPYONLY)
+configure_file(inventoryAAA.csv ${CMAKE_CURRENT_BINARY_DIR}/inventoryAAA.csv COPYONLY)

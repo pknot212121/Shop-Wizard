@@ -60,6 +60,7 @@ void runTests()
   i4.addItem(makeGrocery("G1","Apple",30,1.49,"2026-06-01"));
   i4.addItem(makeGrocery("P1","Potato",30,16.49,"2026-06-01"));
   i4.addItem(makeElectronics("L1","Laptop",10,1799.99,24));
+  std::cout << "FILTERED ITEMS:" << std::endl;
   auto a = filterItems(i4,[](const std::shared_ptr<Item>& item){return item->getQuantity()<20;});
   for (auto& item : a ) item->display();
 
@@ -130,6 +131,31 @@ void runTests()
   {
     std::cout << "Error: " << err.what() << std::endl;
   }
+
+  try
+  {
+    i6.readFromFile("inventoryNeg.csv");
+  } catch (const InventoryException& err)
+  {
+    std::cout << "Error: " << err.what() << std::endl;
+  }
+
+  try
+  {
+    i6.readFromFile("inventoryDup.csv");
+  } catch (const InventoryException& err)
+  {
+    std::cout << "Error: " << err.what() << std::endl;
+  }
+
+  try
+  {
+    i6.readFromFile("inventoryAAA.csv");
+  } catch (const InventoryException& err)
+  {
+    std::cout << "Error: " << err.what() << std::endl;
+  }
+
 
   try
   {

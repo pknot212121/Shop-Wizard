@@ -12,14 +12,14 @@ class ItemNotFoundException : public InventoryException
 {
 public:
     explicit ItemNotFoundException(const std::string& id)
-        : InventoryException("Item not found with ID: " + id) {}
+        : InventoryException("Item with ID: \'" + id + "\' not found.") {}
 };
 
 class DuplicateItemException : public InventoryException
 {
 public:
     explicit DuplicateItemException(const std::string& id)
-        : InventoryException("Item with ID: " + id + " already exists!") {}
+        : InventoryException("Item with ID: \'" + id + "\' already exists in inventory.") {}
 };
 
 class InvalidValueException : public InventoryException
