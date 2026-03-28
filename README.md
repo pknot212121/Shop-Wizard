@@ -11,7 +11,7 @@ The commands should be inputted as follows:
 - Only the exact number and type of arguments can be inputted, otherwise the program will throw an exception.
 
 ### Tests
-- The program also includes some test and sample .csv files for earlier tasks.
+- The program also includes some tests and sample .csv files for earlier tasks.
 
 ### Requirements
 - **C++ Compiler:** A compiler with C++17 support is required
